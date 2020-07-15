@@ -1,5 +1,12 @@
 import React from "react";
+import {
+  createHtmlPortalNode,
+  InPortal,
+  OutPortal
+} from "react-reverse-portal";
 import "./styles.css";
+
+const pNode = createHtmlPortalNode();
 
 export default function App() {
   const [showCounter, setShowCounter] = React.useState(true);
@@ -9,7 +16,10 @@ export default function App() {
       <button onClick={() => setShowCounter(!showCounter)}>
         Click to toggle counter
       </button>
-      {showCounter && <Counter />}
+      <InPortal node={pNode}>
+        <Counter />
+      </InPortal>
+      {showCounter && <OutPortal node={pNode} />}
     </div>
   );
 }
