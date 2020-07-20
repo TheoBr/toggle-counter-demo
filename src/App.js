@@ -17,12 +17,15 @@ export default function App() {
 export const Counter = () => {
   const [count, setCount] = React.useState(0);
   return (
-    <div
-      onClick={() => {
-        setCount(count + 1);
-      }}
-    >
+    <div className="counter">
       {count}
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        Increase count
+      </button>
     </div>
   );
 };
